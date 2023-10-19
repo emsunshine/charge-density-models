@@ -62,6 +62,8 @@ class PaiNN_Charge(PaiNN):
             id_swap,
         ) = self.generate_graph_values(data)
 
+        edge_vector *= edge_dist[:, None]
+
         assert z.dim() == 1 and z.dtype == torch.long
 
         edge_rbf = self.radial_basis(edge_dist)  # rbf * envelope
